@@ -4,7 +4,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo/logo.png";
 import { LayoutDashboard, Newspaper, Users, Settings, LogOut} from "lucide-react";
-import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarTrigger, useSidebar} from "@/components/ui/sidebar";
+import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarMenuButton} from "@/components/ui/sidebar";
 
 
 const navItems = [
@@ -17,23 +17,17 @@ const navItems = [
 
 export default function AdminSidebar() {
   const pathname = usePathname();
-  const { state } = useSidebar();
-  const isCollapsed = state === "collapsed";
 
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="p-0">
-        {/* Logo area — same height as topbar (h-16) */}
-        <div className="flex items-center h-16 px-4 border-b border-gray-200">
-          {!isCollapsed && (
-            <Link href="/" className="flex items-center gap-2.5 flex-1 min-w-0">
-              <Image src={logo} alt="TuacasaAqui" width={32} height={32} className="shrink-0" />
-              <span className="text-lg font-bold text-[#1b3a5c] truncate">
-                TeuEmpregoAqui
-              </span>
-            </Link>
-          )}
-          <SidebarTrigger className="shrink-0 ml-auto bg-transparent border-0 shadow-none text-gray-500 hover:text-gray-700 hover:bg-transparent" />
+        <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200 group-data-[collapsible=icon]:px-0">
+          <Link href="/" className="flex items-center gap-2.5 min-w-0 group-data-[collapsible=icon]:justify-center">
+            <Image src={logo} alt="TuacasaAqui" width={40} height={40} className="shrink-0 group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8" />
+            <span className="text-lg font-bold text-[#1b3a5c] truncate group-data-[collapsible=icon]:hidden">
+              TeuEmpregoAqui
+            </span>
+          </Link>
         </div>
       </SidebarHeader>
 
@@ -46,19 +40,20 @@ export default function AdminSidebar() {
                   ? pathname === "/"
                   : pathname.startsWith(item.href);
               return (
-                <SidebarMenuItem key={item.href}>
+                <SidebarMenuItem key={item.href} className="px-3 mt-2 group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
                   <SidebarMenuButton
                     asChild
                     isActive={isActive}
                     tooltip={item.title}
                     className={
+                    
                       isActive
-                        ? "bg-[#1b3a5c] text-white hover:bg-[#1b3a5c]/90 hover:text-white"
-                        : "text-gray-600 hover:bg-gray-100"
+                        ? "bg-linear-to-r from-button-start to-button-end text-white py-3  rounded-lg hover:text-white"
+                        : "text-gray-600 hover:bg-gray-100  py-3"
                     }
                   >
                     <Link href={item.href}>
-                      <item.icon className="size-5" />
+                      <item.icon className="size-6" />
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
