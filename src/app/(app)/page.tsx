@@ -8,10 +8,10 @@ export default function DashboardPage() {
     return (
         <div>
             <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-title">
                     Dashboard Overview
                 </h1>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-description mt-1">
                     Welcome back, Fernando. Here&apos;s what&apos;s happening with your
                     location intelligence platform.
                 </p>

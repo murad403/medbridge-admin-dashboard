@@ -19,7 +19,7 @@ export default function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="bg-white">
       <SidebarHeader className="p-0">
         <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200 group-data-[collapsible=icon]:px-0">
           <Link href="/" className="flex items-center gap-2.5 min-w-0 group-data-[collapsible=icon]:justify-center">
