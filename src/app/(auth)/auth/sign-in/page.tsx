@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState } from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
@@ -8,16 +7,13 @@ import { signInSchema, type SignInFormData } from "@/validation/auth.validation"
 import AuthCard from "@/components/auth/AuthCard";
 import { Eye, EyeOff } from "@/components/icons";
 
+
 export default function SignInPage() {
   const [showPassword, setShowPassword] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<SignInFormData>({
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
   });
+
 
   const onSubmit = async (data: SignInFormData) => {
     console.log("Sign in:", data);
@@ -55,7 +51,7 @@ export default function SignInPage() {
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Enter your full name"
+              placeholder="Enter your password"
               {...register("password")}
               className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1b3a5c]/30 focus:border-[#1b3a5c] transition pr-11"
             />
