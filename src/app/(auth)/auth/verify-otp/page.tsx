@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { verifyOtpSchema, type VerifyOtpFormData } from "@/validation/auth.validation";
-import AuthCard from "@/components/auth/AuthCard";
+import AuthCard from "@/components/shared/AuthCard";
 import { ArrowLeft } from "lucide-react";
 
 export default function VerifyOtpPage() {
@@ -126,7 +126,7 @@ export default function VerifyOtpPage() {
         <div className="flex items-center justify-between text-sm">
           <span className="text-gray-400">Didn&apos;t receive the code?</span>
           {countdown > 0 ? (
-            <span className="font-semibold text-gray-400">
+            <span className="font-medium text-heading">
               Resend in {countdown}s
             </span>
           ) : (

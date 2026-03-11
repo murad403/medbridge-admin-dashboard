@@ -7,7 +7,7 @@ import {
   forgotPasswordSchema,
   type ForgotPasswordFormData,
 } from "@/validation/auth.validation";
-import AuthCard from "@/components/auth/AuthCard";
+import AuthCard from "@/components/shared/AuthCard";
 import { ArrowLeft } from "lucide-react";
 
 export default function ForgotPasswordPage() {
