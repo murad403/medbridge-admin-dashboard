@@ -74,3 +74,25 @@ export const dummyArticles: Article[] = [
     image: image5,
   },
 ];
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  status: "active" | "guest";
+  savedAreas: number;
+  searches: number;
+  mostViewed: string;
+  lastActive: string;
+}
+
+export const dummyUsers: User[] = [
+  { id: "1", name: "Sarah Johnson",   email: "sarah.j@email.com",     status: "active", savedAreas: 8,  searches: 45, mostViewed: "Downtown Brooklyn",  lastActive: "2 hours ago" },
+  { id: "2", name: "Michael Chen",    email: "mchen@email.com",       status: "active", savedAreas: 12, searches: 67, mostViewed: "Chelsea Manhattan",  lastActive: "1 day ago" },
+  { id: "3", name: "Guest User",      email: "",                      status: "guest",  savedAreas: 0,  searches: 8,  mostViewed: "Williamsburg",       lastActive: "3 hours ago" },
+  { id: "4", name: "Emily Rodriguez", email: "emily.r@email.com",     status: "active", savedAreas: 15, searches: 92, mostViewed: "Park Slope",         lastActive: "5 hours ago" },
+  { id: "5", name: "David Kim",       email: "dkim@email.com",        status: "active", savedAreas: 6,  searches: 34, mostViewed: "Upper West Side",    lastActive: "2 days ago" },
+  { id: "6", name: "Guest User",      email: "",                      status: "guest",  savedAreas: 0,  searches: 3,  mostViewed: "Astoria",            lastActive: "1 hour ago" },
+  { id: "7", name: "Jessica Martinez",email: "jmartinez@email.com",   status: "active", savedAreas: 10, searches: 58, mostViewed: "Greenwich Village",   lastActive: "4 hours ago" },
+  { id: "8", name: "Ryan Thompson",   email: "rthompson@email.com",   status: "active", savedAreas: 4,  searches: 21, mostViewed: "Long Island City",   lastActive: "1 week ago" },
+];

@@ -317,19 +317,18 @@ export default function ArticleForm({
                                 <Popover>
                                     <PopoverTrigger asChild>
                                         <button
-                                            
                                             className={cn(
-                                                "w-full justify-between items-center text-left font-normal border border-gray-400 rounded-lg py-2 px-4",
+                                                "w-full flex justify-between items-center text-left font-normal border border-gray-400 rounded-lg py-2 px-4",
                                                 !field.value && "text-muted-foreground",
                                                 errors.publishDate && "border-red-500"
                                             )}
                                         >
-                                            <CalendarIcon className="mr-2 h-4 w-4" />
                                             {field.value ? format(field.value, "PPP") : "Pick a date"}
+                                            <CalendarIcon className="ml-2 h-4 w-4" />
                                         </button>
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0" align="end">
-                                        <div className="[&_button[aria-selected='true']]:bg-heading [&_button[aria-selected='true']]:text-white [&_button[aria-selected='true']:hover]:bg-heading">
+                                        <div>
                                             <Calendar
                                                 mode="single"
                                                 selected={field.value}

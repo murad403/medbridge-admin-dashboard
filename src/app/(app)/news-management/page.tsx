@@ -13,7 +13,6 @@ import Image from "next/image";
 
 
 
-
 export default function NewsManagementPage() {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("all articles");

@@ -51,8 +51,8 @@ const Stats = () => {
                 {stat.change}
               </span>
             </div>
-            <p className="text-2xl font-semibold text-gray-900">{stat.value}</p>
-            <p className="text-sm text-gray-500">{stat.label}</p>
+            <p className="text-2xl font-medium text-title">{stat.value}</p>
+            <p className="text-sm text-description">{stat.label}</p>
           </div>
         ))}
       </div>
