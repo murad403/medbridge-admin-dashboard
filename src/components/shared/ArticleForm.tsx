@@ -319,7 +319,7 @@ export default function ArticleForm({
                                         <button
                                             
                                             className={cn(
-                                                "w-full justify-between items-center text-left font-normal border border-gray-400 rounded-lg",
+                                                "w-full justify-between items-center text-left font-normal border border-gray-400 rounded-lg py-2 px-4",
                                                 !field.value && "text-muted-foreground",
                                                 errors.publishDate && "border-red-500"
                                             )}
