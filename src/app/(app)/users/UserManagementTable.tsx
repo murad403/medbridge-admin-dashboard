@@ -1,9 +1,6 @@
 "use client"
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { dummyUsers } from '@/lib/demo'
-import { Clock, Eye, MapPin, Search } from 'lucide-react'
+import { CircleCheck, Clock, Eye, MapPin, Search, UserRound } from 'lucide-react'
 import React, { useMemo, useState } from 'react'
 
 const avatarColors = [
@@ -48,11 +45,11 @@ const UserManagementTable = () => {
 
                 <div className="relative w-full md:w-96">
                     <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
-                    <Input
+                    <input
                         placeholder="Search users..."
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="pl-9 py-3"
+                        className="w-full h-10 rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-blue-200"
                     />
                 </div>
 
@@ -76,29 +73,29 @@ const UserManagementTable = () => {
             </div>
 
 
-            <div className="bg-white rounded-xl border overflow-hidden">
-                <Table>
-                    <TableHeader>
-                        <TableRow className="bg-gray-50">
-                            <TableHead className="font-semibold text-description">User</TableHead>
-                            <TableHead className="font-semibold text-description">Status</TableHead>
-                            <TableHead className="font-semibold text-description">Saved Areas</TableHead>
-                            <TableHead className="font-semibold text-description">Searches</TableHead>
-                            <TableHead className="font-semibold text-description">Most Viewed</TableHead>
-                            <TableHead className="font-semibold text-description text-right">Last Active</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
+            <div className="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+                <table className="w-full min-w-180">
+                    <thead>
+                        <tr className="bg-slate-50 border-b border-slate-200">
+                            <th className="font-semibold text-description text-left px-5 py-4 text-sm">User</th>
+                            <th className="font-semibold text-description text-left px-3 py-4 text-sm">Status</th>
+                            <th className="font-semibold text-description text-left px-3 py-4 text-sm">Saved Areas</th>
+                            <th className="font-semibold text-description text-left px-3 py-4 text-sm">Searches</th>
+                            <th className="font-semibold text-description text-left px-3 py-4 text-sm">Most Viewed</th>
+                            <th className="font-semibold text-description text-right px-5 py-4 text-sm">Last Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         {filteredUsers.length === 0 ? (
-                            <TableRow>
-                                <TableCell colSpan={6} className="text-center py-12 text-description">
+                            <tr>
+                                <td colSpan={6} className="text-center py-12 text-description">
                                     No users found
-                                </TableCell>
-                            </TableRow>
+                                </td>
+                            </tr>
                         ) : (
                             filteredUsers.map((user, index) => (
-                                <TableRow key={user.id} className="hover:bg-gray-50">
-                                    <TableCell>
+                                <tr key={user.id} className="hover:bg-slate-50/70 border-b border-slate-200 last:border-b-0 align-top">
+                                    <td className="px-5 py-4">
                                         <div className="flex items-center gap-3">
                                             <div className={`size-9 rounded-full flex items-center justify-center font-semibold text-sm shrink-0 ${avatarColors[index % avatarColors.length]}`}>
                                                 {user.name.charAt(0)}
@@ -108,38 +105,44 @@ const UserManagementTable = () => {
                                                 <p className="text-description text-xs mt-0.5">{user.email || "-"}</p>
                                             </div>
                                         </div>
-                                    </TableCell>
-                                    <TableCell>
+                                    </td>
+                                    <td className="px-3 py-4">
                                         {user.status === "active" ? (
-                                            <Badge className="bg-green-100 text-green-700 hover:bg-green-100">Active</Badge>
+                                            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium px-2.5 py-1">
+                                                <CircleCheck className="size-3.5" />
+                                                Active
+                                            </span>
                                         ) : (
-                                            <Badge className="bg-orange-100 text-orange-600 hover:bg-orange-100">Guest</Badge>
+                                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-100 text-orange-700 text-xs font-medium px-2.5 py-1">
+                                                <UserRound className="size-3.5" />
+                                                Guest
+                                            </span>
                                         )}
-                                    </TableCell>
-                                    <TableCell className="text-description">
+                                    </td>
+                                    <td className="text-description px-3 py-4 text-sm">
                                         <div className="flex items-center gap-1.5">
                                             <MapPin size={14} className="text-gray-400" />
                                             {user.savedAreas}
                                         </div>
-                                    </TableCell>
-                                    <TableCell className="text-description">
+                                    </td>
+                                    <td className="text-description px-3 py-4 text-sm">
                                         <div className="flex items-center gap-1.5">
                                             <Eye size={14} className="text-gray-400" />
                                             {user.searches}
                                         </div>
-                                    </TableCell>
-                                    <TableCell className="text-description">{user.mostViewed}</TableCell>
-                                    <TableCell className="text-description text-right">
+                                    </td>
+                                    <td className="text-description px-3 py-4 text-sm whitespace-nowrap">{user.mostViewed}</td>
+                                    <td className="text-description text-right px-5 py-4 text-sm whitespace-nowrap">
                                         <div className="flex items-center justify-end gap-1.5">
                                             <Clock size={14} className="text-gray-400" />
                                             {user.lastActive}
                                         </div>
-                                    </TableCell>
-                                </TableRow>
+                                    </td>
+                                </tr>
                             ))
                         )}
-                    </TableBody>
-                </Table>
+                    </tbody>
+                </table>
             </div>
         </div>
     )
