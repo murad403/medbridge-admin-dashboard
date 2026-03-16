@@ -1,4 +1,5 @@
 "use client"
+import CustomPagination from '@/components/shared/CustomPagination'
 import { dummyUsers } from '@/lib/demo'
 import { CircleCheck, Clock, Eye, MapPin, Search, UserRound } from 'lucide-react'
 import React, { useMemo, useState } from 'react'
@@ -17,6 +18,8 @@ const avatarColors = [
 const UserManagementTable = () => {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("all users");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
 
     const filteredUsers = useMemo(() => {
         let result = dummyUsers;
@@ -39,6 +42,16 @@ const UserManagementTable = () => {
 
         return result;
     }, [search, activeTab]);
+
+    const totalPages = Math.max(1, Math.ceil(filteredUsers.length / pageSize));
+    const safeCurrentPage = Math.min(currentPage, totalPages);
+
+    const paginatedUsers = useMemo(() => {
+        const startIndex = (safeCurrentPage - 1) * pageSize;
+
+        return filteredUsers.slice(startIndex, startIndex + pageSize);
+    }, [filteredUsers, pageSize, safeCurrentPage]);
+
     return (
         <div>
             <div className="mb-6 flex items-center gap-4 flex-col md:flex-row">
@@ -48,7 +61,10 @@ const UserManagementTable = () => {
                     <input
                         placeholder="Search users..."
                         value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                            setCurrentPage(1);
+                        }}
                         className="w-full h-10 rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-blue-200"
                     />
                 </div>
@@ -62,7 +78,10 @@ const UserManagementTable = () => {
                                     ? "bg-linear-to-r from-button-start via-button-end to-button-start text-white"
                                     : "bg-[#F1F5F9] text-gray-700 hover:bg-[#F1F5F9]/80 capitalize"
                                     }`}
-                                onClick={() => setActiveTab(tab)}
+                                onClick={() => {
+                                    setActiveTab(tab)
+                                    setCurrentPage(1)
+                                }}
                             >
                                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
                             </button>
@@ -93,11 +112,11 @@ const UserManagementTable = () => {
                                 </td>
                             </tr>
                         ) : (
-                            filteredUsers.map((user, index) => (
+                            paginatedUsers.map((user, index) => (
                                 <tr key={user.id} className="hover:bg-slate-50/70 border-b border-slate-200 last:border-b-0 align-top">
                                     <td className="px-5 py-4">
                                         <div className="flex items-center gap-3">
-                                            <div className={`size-9 rounded-full flex items-center justify-center font-semibold text-sm shrink-0 ${avatarColors[index % avatarColors.length]}`}>
+                                            <div className={`size-9 rounded-full flex items-center justify-center font-semibold text-sm shrink-0 ${avatarColors[((safeCurrentPage - 1) * pageSize + index) % avatarColors.length]}`}>
                                                 {user.name.charAt(0)}
                                             </div>
                                             <div>
@@ -143,6 +162,14 @@ const UserManagementTable = () => {
                         )}
                     </tbody>
                 </table>
+
+                <CustomPagination
+                    currentPage={safeCurrentPage}
+                    totalItems={filteredUsers.length}
+                    pageSize={pageSize}
+                    onPageChange={setCurrentPage}
+                    itemLabel="users"
+                />
             </div>
         </div>
     )

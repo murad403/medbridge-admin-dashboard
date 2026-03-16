@@ -1,9 +1,10 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Plus, Search, Pencil, Trash2, Eye, CircleCheck, Clock3 } from "lucide-react";
 import DeleteArticleModal from "@/components/modal/DeleteArticleModal";
+import CustomPagination from "@/components/shared/CustomPagination";
 import { Article, dummyArticles } from "@/lib/demo";
 import Image from "next/image";
 
@@ -13,6 +14,8 @@ export default function NewsManagementPage() {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState("all articles");
   const [articles, setArticles] = useState<Article[]>(dummyArticles);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const [deleteModal, setDeleteModal] = useState<{
     open: boolean;
     article: Article | null;
@@ -37,6 +40,15 @@ export default function NewsManagementPage() {
 
     return result;
   }, [articles, search, activeTab]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredArticles.length / pageSize));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+
+  const paginatedArticles = useMemo(() => {
+    const startIndex = (safeCurrentPage - 1) * pageSize;
+
+    return filteredArticles.slice(startIndex, startIndex + pageSize);
+  }, [filteredArticles, pageSize, safeCurrentPage]);
 
   const handleDelete = (article: Article) => {
     setDeleteModal({ open: true, article });
@@ -77,7 +89,10 @@ export default function NewsManagementPage() {
           <input
             placeholder="Search articles..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value)
+              setCurrentPage(1)
+            }}
             className="w-full h-10 rounded-lg border border-gray-200 bg-white pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-blue-200"
           />
         </div>
@@ -91,7 +106,10 @@ export default function NewsManagementPage() {
                   ? "bg-linear-to-r from-button-start via-button-end to-button-start text-white"
                   : "bg-[#F1F5F9] text-gray-700 hover:bg-[#F1F5F9]/80"
                   }`}
-                onClick={() => setActiveTab(tab)}
+                onClick={() => {
+                  setActiveTab(tab)
+                  setCurrentPage(1)
+                }}
               >
                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
@@ -125,9 +143,10 @@ export default function NewsManagementPage() {
                 </td>
               </tr>
             ) : (
-              filteredArticles.map((article, index) => {
-                const isFeatured = index < 3;
-                const isDraft = index >= filteredArticles.length - 2;
+              paginatedArticles.map((article, index) => {
+                const absoluteIndex = (safeCurrentPage - 1) * pageSize + index;
+                const isFeatured = absoluteIndex < 3;
+                const isDraft = absoluteIndex >= filteredArticles.length - 2;
 
                 return (
                 <tr key={article.id} className="hover:bg-slate-50/70 border-b border-slate-200 last:border-b-0 align-top">
@@ -206,6 +225,14 @@ export default function NewsManagementPage() {
             )}
           </tbody>
         </table>
+
+        <CustomPagination
+          currentPage={safeCurrentPage}
+          totalItems={filteredArticles.length}
+          pageSize={pageSize}
+          onPageChange={setCurrentPage}
+          itemLabel="articles"
+        />
       </div>
 
       {/* Delete Modal */}
