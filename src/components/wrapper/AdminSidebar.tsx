@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo/logo.png";
-import { LayoutDashboard, Newspaper, Users, Settings, LogOut } from "lucide-react";
+import { LayoutDashboard, Settings, LogOut, History, User } from "lucide-react";
 import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import { useState } from "react";
 import LogoutModal from "../modal/LogoutModal";
@@ -11,8 +11,8 @@ import LogoutModal from "../modal/LogoutModal";
 
 const navItems = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
-  { title: "News Management", href: "/news-management", icon: Newspaper },
-  { title: "Users", href: "/users", icon: Users },
+  { title: "Patient Queue", href: "/patient-queue", icon: User  },
+  { title: "History", href: "/history", icon: History },
   { title: "Settings", href: "/settings", icon: Settings },
 ];
 
@@ -33,9 +33,9 @@ export default function AdminSidebar() {
       <SidebarHeader className="p-0">
         <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200 group-data-[collapsible=icon]:px-0">
           <Link href="/" className="flex items-center gap-2.5 min-w-0 group-data-[collapsible=icon]:justify-center">
-            <Image src={logo} alt="TuacasaAqui" width={40} height={40} className="shrink-0 group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8" />
+            <Image src={logo} alt="MedBridge" width={40} height={40} className="shrink-0 group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8" />
             <span className="text-lg font-bold text-[#1b3a5c] truncate group-data-[collapsible=icon]:hidden">
-              TuacasaAqui
+              MedBridge
             </span>
           </Link>
         </div>
@@ -58,8 +58,8 @@ export default function AdminSidebar() {
                     className={` text-white
                     
                       ${isActive
-                        ? "bg-linear-to-r from-button-start via-button-end to-button-start py-3 rounded-lg hover:text-white"
-                        : "text-gray-600 hover:bg-gray-100  py-3"}
+                        ? "bg-button-color py-3 rounded-[10px] hover:text-white"
+                        : "text-title hover:bg-gray-100  py-3"}
                     `}
                   >
                     <Link href={item.href}>

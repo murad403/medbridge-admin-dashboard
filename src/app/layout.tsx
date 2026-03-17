@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TuacasaAqui",
-  description: "TuacasaAqui Admin Panel",
+  title: "MedBridge",
+  description: "MedBridge Doctor Panel",
 };
 
 export default function RootLayout({

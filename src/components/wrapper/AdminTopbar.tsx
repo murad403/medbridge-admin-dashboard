@@ -15,12 +15,8 @@ export default function AdminTopbar() {
           <Bell className="size-5" />
           <span className="absolute -top-1 -right-1 size-2 bg-red-500 rounded-full" />
         </button>
-        <div className="flex items-center gap-2.5">
-          <div className="hidden sm:block text-right">
-            <p className="text-sm font-semibold text-gray-900 leading-tight">
-              Fernando
-            </p>
-          </div>
+        <div>
+       
           <Link href="/settings/personal-information">
             <Avatar className="size-9 bg-[#1b3a5c]">
               <AvatarFallback className="bg-[#1b3a5c] text-white text-sm font-semibold">

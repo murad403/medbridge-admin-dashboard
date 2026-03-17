@@ -6,12 +6,11 @@
 @source "../../src";
 
 @theme {
-    --color-heading: #214572;
-    --color-button-start: #214572;
-    --color-button-end: #1D2B3F;
-    --color-title: #1A202C;
-    --color-description: #64748B;
-
+    --color-button-color: #4F81FF;
+    --color-border-color: #D1D5DB;
+    --color-main: #FFFFFF;
+    --color-title: #1A1A1A;
+    --color-description: #717182;
 }
 
 :root {
