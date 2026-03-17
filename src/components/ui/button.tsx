@@ -5,11 +5,11 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "w-full py-2.5 bg-linear-to-r from-button-start via-button-end to-button-start text-white rounded-lg font-medium text-base hover:opacity-90 transition disabled:opacity-60 cursor-pointer",
+  "w-full py-2.5 bg-button-color text-white rounded-[10px] font-medium text-base hover:opacity-90 transition disabled:opacity-60 cursor-pointer",
   {
     variants: {
       variant: {
-        default: "bg-primary [a]:hover:bg-primary/80",
+        default: "bg-button-color [a]:hover:bg-primary/80",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:

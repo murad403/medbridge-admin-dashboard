@@ -1,59 +1,76 @@
 "use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  forgotPasswordSchema,
-  type ForgotPasswordFormData,
-} from "@/validation/auth.validation";
-import AuthCard from "@/components/shared/AuthCard";
-import { ArrowLeft } from "lucide-react";
 
-export default function ForgotPasswordPage() {
-  const router = useRouter();
-  const { register, handleSubmit, formState: { errors, isSubmitting }} = useForm<ForgotPasswordFormData>({
+import Image from "next/image";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import authBgMain from "@/assets/auth/auth1.png";
+import authBgAccent from "@/assets/auth/auth2.png";
+import {
+  ForgotPasswordFormData,
+  forgotPasswordSchema,
+} from "@/validation/auth.validation";
+
+const ForgotPassword = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ForgotPasswordFormData>({
     resolver: zodResolver(forgotPasswordSchema),
+    defaultValues: {
+      email: "",
+    },
   });
 
-  const onSubmit = async (data: ForgotPasswordFormData) => {
-    console.log("Forgot password:", data);
-    router.push("/auth/verify-otp");
+  const onSubmit: SubmitHandler<ForgotPasswordFormData> = async (data) => {
+    console.log("Forgot password payload", data);
   };
 
   return (
-    <AuthCard>
-      <div className="flex items-center gap-2 mb-4">
-        <Link href="/auth/sign-in" className="text-gray-900 hover:text-gray-600">
-          <ArrowLeft />
-        </Link>
-        <h2 className="text-lg font-bold text-gray-900">Verify Email</h2>
-      </div>
+    <div className="relative w-full min-h-screen overflow-hidden bg-[#F3F4F6] flex items-center justify-center px-4 py-8">
+      <Image
+        src={authBgMain}
+        alt="Decorative background"
+        className="absolute -left-24 -bottom-30 w-130 h-130 object-contain opacity-30 pointer-events-none"
+      />
+      <Image
+        src={authBgAccent}
+        alt="Decorative accent"
+        className="absolute -top-12 -right-8 w-105 h-auto object-contain pointer-events-none"
+      />
 
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <label className="block text-base font-semibold text-gray-900 mb-1.5">
-            Email
-          </label>
-          <input
-            type="email"
-            placeholder="Enter your email"
-            {...register("email")}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1b3a5c]/30 focus:border-[#1b3a5c] transition"
-          />
-          {errors.email && (
-            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
-          )}
+      <div className="relative z-10 w-full max-w-95 rounded-2xl border border-[#E5E7EB] bg-white/65 p-5 sm:p-6">
+        <div className="text-center mb-5">
+          <h1 className="text-[48px] leading-13 font-semibold text-[#12141B]">
+            Forgot Password
+          </h1>
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full py-3.5 bg-linear-to-b from-[#2c4f6e] to-[#0f2336] text-white rounded-lg font-semibold text-sm hover:opacity-90 transition disabled:opacity-60 cursor-pointer"
-        >
-          {isSubmitting ? "Verifying..." : "Verify"}
-        </button>
-      </form>
-    </AuthCard>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+          <div>
+            <label className="block text-[26px] leading-7 font-semibold text-[#295C55] mb-2">
+              Email
+            </label>
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              className="h-11.5 bg-white"
+              {...register("email")}
+            />
+            {errors.email && (
+              <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
+            )}
+          </div>
+
+          <Button type="submit" disabled={isSubmitting} className="mt-2 h-11.25 text-[34px] leading-8.5">
+            Send OTP
+          </Button>
+        </form>
+      </div>
+    </div>
   );
-}
+};
+
+export default ForgotPassword;
