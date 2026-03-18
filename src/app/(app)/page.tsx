@@ -1,36 +1,29 @@
-import Stats from "./dashboard/Stats";
-import MostViewedAreas from "./dashboard/MostViewedAreas";
-import SearchActivity from "./dashboard/SearchActivity";
-import MostSavedNeighborhoods from "./dashboard/MostSavedNeighborhoods";
+import PageHeader from "@/components/shared/PageHeader";
+import AIPerformance from "./dashboard/AIPerformance";
+import DashboardStats from "./dashboard/DashboardStats";
+import PatientQueue from "./dashboard/PatientQueue";
+import RecentlyCompleted from "./dashboard/RecentlyCompleted";
+import RiskAlert from "./dashboard/RiskAlert";
 
 
 export default function DashboardPage() {
     return (
-        <div>
-            <div className="mb-6">
-                <h1 className="text-2xl font-bold text-title">
-                    Dashboard Overview
-                </h1>
-                <p className="text-sm text-description mt-1">
-                    Welcome back, Fernando. Here&apos;s what&apos;s happening with your
-                    location intelligence platform.
-                </p>
+        <div className="space-y-6 md:space-y-8">
+            <PageHeader title="Dashboard" description="Overview of today's clinical activities" />
+
+            <DashboardStats />
+
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
+                <div className="space-y-6 xl:col-span-8">
+                    <RiskAlert />
+                    <PatientQueue />
+                </div>
+
+                <div className="space-y-6 xl:col-span-4">
+                    <RecentlyCompleted />
+                    <AIPerformance />
+                </div>
             </div>
-
-            {/* Stat Cards */}
-            <Stats />
-
-            {/* Charts Row */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-                {/* Search Activity */}
-                <SearchActivity/>
-
-                {/* Most Viewed Areas */}
-                <MostViewedAreas/>
-            </div>
-
-            {/* Most Saved Neighborhoods */}
-            <MostSavedNeighborhoods/>
         </div>
     );
 }

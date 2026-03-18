@@ -9,10 +9,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import logo from "@/assets/logo/logo.png";
 import { SignInFormData, signInSchema } from "@/validation/auth.validation";
+import { useRouter } from "next/navigation";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const router = useRouter();
   const { register, handleSubmit, formState: { errors } } = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -23,6 +24,7 @@ const SignIn = () => {
 
   const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
     console.log("Sign in payload", data);
+    router.push("/");
   };
 
   return (
