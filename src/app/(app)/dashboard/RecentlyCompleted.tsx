@@ -20,7 +20,7 @@ const completedCases = [
 
 const RecentlyCompleted = () => {
   return (
-    <section className="rounded-2xl border border-border-color bg-main p-4 shadow-sm sm:p-5">
+    <section className="rounded-[10px] border border-border-color bg-main shadow-xs p-4">
       <div className="mb-4 flex items-center gap-2">
         <CircleCheck className="size-4 text-title" />
         <h2 className="text-xl font-medium text-title">Recently Completed</h2>

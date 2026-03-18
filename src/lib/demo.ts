@@ -58,3 +58,81 @@ export const alerts: TAlert[] = [
     time: "28 min ago",
   },
 ];
+
+export type TQueueItem = {
+  name: string;
+  age: number;
+  priority: string;
+  priorityClass: string;
+  issue: string;
+  time: string;
+};
+
+
+export const patients: TQueueItem[] = [
+  {
+    name: "Emma Davis",
+    age: 34,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Persistent cough",
+    time: "45 min ago",
+  },
+  {
+    name: "James Wilson",
+    age: 67,
+    priority: "LOW",
+    priorityClass: "bg-[#ECFDF3] text-[#16A34A]",
+    issue: "Joint pain",
+    time: "1 hr ago",
+  },
+  {
+    name: "Lisa Martinez",
+    age: 29,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Allergic reaction",
+    time: "1 hr 15 min ago",
+  },
+  {
+    name: "Lisa Martinez",
+    age: 29,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Allergic reaction",
+    time: "1 hr 15 min ago",
+  },
+  {
+    name: "Lisa Martinez",
+    age: 29,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Allergic reaction",
+    time: "1 hr 15 min ago",
+  },
+  {
+    name: "Lisa Martinez",
+    age: 29,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Allergic reaction",
+    time: "1 hr 15 min ago",
+  },
+  {
+    name: "Lisa Martinez",
+    age: 29,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Allergic reaction",
+    time: "1 hr 15 min ago",
+  },
+  {
+    name: "Lisa Martinez",
+    age: 29,
+    priority: "MEDIUM",
+    priorityClass: "bg-[#FFF7E5] text-[#F59E0B]",
+    issue: "Allergic reaction",
+    time: "1 hr 15 min ago",
+  },
+];
+
