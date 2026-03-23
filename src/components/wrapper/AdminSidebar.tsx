@@ -16,6 +16,8 @@ const navItems = [
   { title: "Settings", href: "/settings", icon: Settings },
 ];
 
+const dashboardActivePaths = ["/risk-alerts", "/view-full-history"];
+
 
 export default function AdminSidebar() {
 
@@ -45,9 +47,10 @@ export default function AdminSidebar() {
         <SidebarGroup>
           <SidebarMenu>
             {navItems.map((item) => {
+              const isDashboardContext = dashboardActivePaths.some((path) => pathname.startsWith(path));
               const isActive =
                 item.href === "/"
-                  ? pathname === "/"
+                  ? pathname === "/" || isDashboardContext
                   : pathname.startsWith(item.href);
               return (
                 <SidebarMenuItem key={item.href} className="px-3 mt-2 group-data-[collapsible=icon]:px-0 group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">

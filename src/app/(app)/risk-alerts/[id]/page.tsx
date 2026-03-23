@@ -64,7 +64,7 @@ const RiskAlertDetailsPage = () => {
 
       <button
         type="button"
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
         className="inline-flex items-center gap-1 text-sm font-medium text-title transition hover:text-button-color cursor-pointer"
       >
         <ArrowLeft className="size-4" />
@@ -119,7 +119,7 @@ const RiskAlertDetailsPage = () => {
             </div>
 
             <Link
-              href="/history"
+              href={`/view-full-history/${10}`}
               className="mt-2 inline-flex w-full items-center justify-center rounded-[10px] bg-button-color px-4 py-2.5 text-sm font-medium text-white transition hover:opacity-90"
             >
               View Full History
