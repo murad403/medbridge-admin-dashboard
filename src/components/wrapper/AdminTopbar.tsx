@@ -64,7 +64,7 @@ export default function AdminTopbar() {
             {isProfileMenuOpen && (
               <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-34 overflow-hidden rounded-[10px] border border-border-color bg-white shadow-sm">
                 <Link
-                  href="/settings/personal-information"
+                  href="/settings"
                   onClick={() => setIsProfileMenuOpen(false)}
                   className="block border-b border-border-color px-4 py-3 text-sm text-title transition hover:bg-[#F9FAFB]"
                 >
