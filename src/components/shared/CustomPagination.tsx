@@ -136,7 +136,7 @@ const CustomPagination = ({
                 className={cn(
                   baseButtonClassName,
                   isActive
-                    ? "border-transparent bg-linear-to-r from-button-start via-button-end to-button-start text-white shadow-sm"
+                    ? "border-transparent bg-button-color text-white shadow-sm"
                     : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"
                 )}
               >

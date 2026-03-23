@@ -1,14 +1,17 @@
+import PageHeader from "@/components/shared/PageHeader"
+import ChangePassword from "./ChangePassword"
+import NotificationsSettings from "./NotificationsSettings"
+import PersonalInformation from "./PersonalInformation"
 
 
 const page = () => {
   return (
-    <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-title">Settings</h1>
-        <p className="text-sm text-description mt-1">
-          Manage your admin profile and platform settings
-        </p>
-      </div>
+    <div className="space-y-4 md:space-y-6 max-w-4xl mx-auto">
+      <PageHeader title="Settings" description="Manage your account and application preferences"/>
+
+      <PersonalInformation />
+      <ChangePassword />
+      <NotificationsSettings />
 
     </div>
   )
