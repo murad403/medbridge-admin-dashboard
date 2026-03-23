@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo/logo.png";
-import { LayoutDashboard, Settings, LogOut, User } from "lucide-react";
+import { LayoutDashboard, Settings, LogOut, Users } from "lucide-react";
 import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import { useState } from "react";
 import LogoutModal from "../modal/LogoutModal";
@@ -11,7 +11,7 @@ import LogoutModal from "../modal/LogoutModal";
 
 const navItems = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
-  { title: "User Management", href: "/user-management", icon: User },
+  { title: "User Management", href: "/user-management", icon: Users },
   { title: "Settings", href: "/settings", icon: Settings },
 ];
 
@@ -34,7 +34,7 @@ export default function AdminSidebar() {
       <SidebarHeader className="p-0">
         <div className="flex items-center justify-center h-16 px-4 border-b border-gray-200 group-data-[collapsible=icon]:px-0">
           <Link href="/" className="flex items-center gap-2.5 min-w-0 group-data-[collapsible=icon]:justify-center">
-            <Image src={logo} alt="MedBridge" width={40} height={40} className="shrink-0 group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8" />
+            <Image src={logo} alt="MedBridge" width={40} height={40} className="shrink-0 group-data-[collapsible=icon]:w-9 group-data-[collapsible=icon]:h-8" />
             <span className="text-lg font-bold text-[#1b3a5c] truncate group-data-[collapsible=icon]:hidden">
               MedBridge
             </span>
