@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import logo from "@/assets/logo/logo.png";
-import { LayoutDashboard, Settings, LogOut, History, User } from "lucide-react";
+import { LayoutDashboard, Settings, LogOut, User } from "lucide-react";
 import { Sidebar, SidebarHeader, SidebarContent, SidebarFooter, SidebarGroup, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import { useState } from "react";
 import LogoutModal from "../modal/LogoutModal";
@@ -11,8 +11,7 @@ import LogoutModal from "../modal/LogoutModal";
 
 const navItems = [
   { title: "Dashboard", href: "/", icon: LayoutDashboard },
-  { title: "Patient Queue", href: "/patient-queue", icon: User  },
-  { title: "History", href: "/history", icon: History },
+  { title: "User Management", href: "/user-management", icon: User },
   { title: "Settings", href: "/settings", icon: Settings },
 ];
 
