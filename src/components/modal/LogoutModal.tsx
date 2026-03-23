@@ -16,8 +16,8 @@ const LogoutModal = ({ open, onOpenChange, onConfirm }: LogoutModalProps) => {
           <div className="mb-1 flex size-16 items-center justify-center rounded-full border-4 border-[#FEE2E2] bg-white text-[#FF2D2D]">
             <CircleAlert className="size-8" />
           </div>
-          <DialogTitle className="text-4xl font-semibold text-title">Logout?</DialogTitle>
-          <DialogDescription className="text-lg text-description">
+          <DialogTitle className="text-2xl font-semibold text-title">Logout?</DialogTitle>
+          <DialogDescription className="text-base text-description">
             Are you sure you want to logout?
           </DialogDescription>
         </DialogHeader>
@@ -29,7 +29,7 @@ const LogoutModal = ({ open, onOpenChange, onConfirm }: LogoutModalProps) => {
               onConfirm();
               onOpenChange(false);
             }}
-            className="w-full cursor-pointer rounded-xl bg-[#FF0A0A] px-4 py-3 text-base font-semibold text-white transition hover:opacity-90"
+            className="w-full cursor-pointer rounded-xl bg-[#FF0A0A] px-4 py-2.5 text-base font-semibold text-white transition hover:opacity-90"
           >
             Yes, Logout
           </button>
@@ -37,7 +37,7 @@ const LogoutModal = ({ open, onOpenChange, onConfirm }: LogoutModalProps) => {
           <button
             type="button"
             onClick={() => onOpenChange(false)}
-            className="w-full cursor-pointer rounded-xl border border-border-color bg-white px-4 py-3 text-base font-medium text-title transition hover:bg-gray-50"
+            className="w-full cursor-pointer rounded-xl border border-border-color bg-white px-4 py-2.5 text-base font-medium text-title transition hover:bg-gray-50"
           >
             No, Cancel
           </button>
