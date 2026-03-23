@@ -50,7 +50,7 @@ const RiskCaseVolume = () => {
       <div className="mt-4 w-full">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-[300px] w-full"
+          className="h-75 w-full"
           role="img"
           aria-label="Risk case volume for the last 12 months"
         >

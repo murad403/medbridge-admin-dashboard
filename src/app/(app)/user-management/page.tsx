@@ -324,7 +324,7 @@ const UserManagementPage = () => {
                     </button>
 
                     {openMenuUserId === user.id && (
-                      <div className="absolute right-10 top-1/2 z-30 w-[190px] -translate-y-1/2 rounded-[14px] border border-border-color bg-white p-2 shadow-[0_8px_24px_rgba(15,23,42,0.12)]">
+                      <div className="absolute right-10 top-1/2 z-30 w-47.5 -translate-y-1/2 rounded-[14px] border border-border-color bg-white p-2 shadow-[0_8px_24px_rgba(15,23,42,0.12)]">
                         <button
                           type="button"
                           onClick={() => handleActionMenuClick(user, "suspend")}

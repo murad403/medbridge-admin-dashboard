@@ -122,7 +122,7 @@ const AddUserModal = ({ open, onOpenChange, onSubmitUser }: AddUserModalProps) =
               id="avatar"
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="flex size-18 items-center justify-center overflow-hidden rounded-[10px] border border-dashed border-[#D1D5DB] bg-[#F9FAFB] text-[#9CA3AF] transition hover:bg-[#F3F4F6]"
+              className="flex size-18 items-center justify-center overflow-hidden rounded-[10px] border border-dashed border-border-color bg-[#F9FAFB] text-[#9CA3AF] transition hover:bg-[#F3F4F6]"
             >
               {avatarUrl ? (
                 // eslint-disable-next-line @next/next/no-img-element

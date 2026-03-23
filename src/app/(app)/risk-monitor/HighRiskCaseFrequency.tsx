@@ -38,7 +38,7 @@ const HighRiskCaseFrequency = () => {
       <div className="mt-5 w-full overflow-x-auto">
         <svg
           viewBox={`0 0 ${width} ${height}`}
-          className="h-[390px] min-w-[650px] w-full"
+          className="h-97.5 min-w-162.5 w-full"
           role="img"
           aria-label="High-risk case monthly trend over the last 6 months"
         >

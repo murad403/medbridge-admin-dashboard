@@ -1,110 +1,60 @@
 "use client";
-
-import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import authImage from "@/assets/auth/auth1.png";
 import { Input } from "@/components/ui/input";
-import { UserRound } from "lucide-react";
+import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PersonalInformation = () => {
-  const [profileImage, setProfileImage] = useState(authImage.src);
-  const [createdBlobUrl, setCreatedBlobUrl] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    return () => {
-      if (createdBlobUrl) {
-        URL.revokeObjectURL(createdBlobUrl);
-      }
-    };
-  }, [createdBlobUrl]);
-
-  const handleSelectProfileImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    if (createdBlobUrl) {
-      URL.revokeObjectURL(createdBlobUrl);
-    }
-
-    const url = URL.createObjectURL(file);
-    setCreatedBlobUrl(url);
-    setProfileImage(url);
-  };
-
   return (
-    <section className="rounded-[10px] border border-border-color bg-main p-4 shadow-xs sm:p-5">
-      <div className="mb-4">
-        <div className="flex items-center gap-2">
-            <UserRound className="mt-0.5 size-4 text-title" />
-          <h2 className="text-xl font-medium text-title">Profile</h2>
-        </div>
-  
-          <p className="text-sm text-description">Update your personal information</p>
-      
-      </div>
+    <section className="rounded-[10px] border border-border-color bg-main p-4 md:p-5">
+      <h2 className="text-2xl font-semibold text-title">Organization Details</h2>
 
-      <input
-        ref={fileInputRef}
-        type="file"
-        accept="image/*"
-        className="hidden"
-        onChange={handleSelectProfileImage}
-      />
-
-      <button
-        type="button"
-        onClick={() => fileInputRef.current?.click()}
-        className="mb-4 block h-28 w-24 overflow-hidden rounded-[10px] border border-border-color bg-[#F5F5F5]"
-        aria-label="Change profile image"
-        title="Click to change image"
-      >
-        <Image
-          src={profileImage}
-          alt="Doctor profile"
-          width={100}
-          height={112}
-          unoptimized
-          className="h-full w-full object-cover"
-        />
-      </button>
-
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="mt-4 grid grid-cols-1 gap-x-4 gap-y-3 md:grid-cols-2 md:max-w-2xl">
         <div>
-          <label className="text-title font-semibold text-sm md:text-base">First Name</label>
-          <Input className="h-11.5 bg-[#F8F9FB]" defaultValue="Emily" />
+          <label className="text-title font-semibold text-sm md:text-base">Organization Name</label>
+          <Input defaultValue="MedBridge Healthcare" className="mt-1 h-11.5 bg-[#F3F4F6]" />
         </div>
 
         <div>
-          <label className="text-title font-semibold text-sm md:text-base">Last Name</label>
-          <Input className="h-11.5 bg-[#F8F9FB]" defaultValue="Brown" />
+          <label className="text-title font-semibold text-sm md:text-base">Organization ID</label>
+          <Input defaultValue="MDBR-2024-001" className="mt-1 h-11.5 bg-[#F3F4F6]" />
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="text-title font-semibold text-sm md:text-base">Primary Address</label>
+          <Input
+            defaultValue="123 Medical Center Blvd, San Francisco, CA 94102"
+            className="mt-1 h-11.5 bg-[#F3F4F6]"
+          />
+        </div>
+
+        <div>
+          <label className="text-title font-semibold text-sm md:text-base">Contact Phone</label>
+          <Input defaultValue="+1 (415) 555-0123" className="mt-1 h-11.5 bg-[#F3F4F6]" />
+        </div>
+
+        <div>
+          <label className="text-title font-semibold text-sm md:text-base">Contact Email</label>
+          <Input defaultValue="admin@medbridge.com" className="mt-1 h-11.5 bg-[#F3F4F6]" />
+        </div>
+
+        <div className="md:col-span-2">
+          <label className="text-title font-semibold text-sm md:text-base">Timezone</label>
+          <Input defaultValue="America/Los_Angeles (PST)" className="mt-1 h-11.5 bg-[#F3F4F6]" />
         </div>
       </div>
 
-      <div className="mt-4 space-y-4">
-        <div>
-          <label className="text-title font-semibold text-sm md:text-base">Email</label>
-          <Input className="h-11.5 bg-[#F1F3F6]" defaultValue="dr.brown@medbridge.com" disabled />
-        </div>
 
-        <div>
-          <label className="text-title font-semibold text-sm md:text-base">Medical License Number</label>
-          <Input className="h-11.5 bg-[#F8F9FB]" defaultValue="VIC-MB-123456" />
-        </div>
 
-        <div>
-          <label className="text-title font-semibold text-sm md:text-base">Specialty</label>
-          <Input className="h-11.5 bg-[#F8F9FB]" defaultValue="Internal Medicine" />
-        </div>
+      <div className="mt-4 flex items-center justify-end gap-3 max-w-2xl">
+        <button className="bg-[#F5F6F8] cursor-pointer py-2.5 px-6 rounded-[10px] border border-border-color">
+          Reset
+        </button>
+        <Button type="button" className="flex items-center justify-center max-w-35">
+          <Save className="size-3.5" />
+          Save Changes
+        </Button>
       </div>
 
-      <Button
-      className="max-w-30 mt-4"
-        type="button"
-      >
-        Save Profile
-      </Button>
     </section>
   );
 };

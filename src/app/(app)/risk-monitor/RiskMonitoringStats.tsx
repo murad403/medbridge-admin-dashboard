@@ -43,7 +43,7 @@ const RiskMonitoringStats = () => {
             </div>
 
             <div className="flex size-9 items-center justify-center rounded-[10px] bg-[#F3F4F6]">
-              <item.icon className="size-[18px] text-[#6B7280]" />
+              <item.icon className="size-4.5 text-[#6B7280]" />
             </div>
           </div>
         </article>
